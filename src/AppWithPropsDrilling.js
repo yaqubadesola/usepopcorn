@@ -221,9 +221,7 @@ export default function App() {
       <Nav movies={movies} />
       <Main
         movies={movies}
-        setMovies={setMovies}
         watched={watched}
-        setWatched={setWatched}
       />
     </>
   );
