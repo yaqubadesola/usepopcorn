@@ -95,12 +95,12 @@ export function Button({ isOpen, setIsOpen }) {
 export function Movie({ movie }) {
   return (
     <li>
-      <img src={movie.Poster} alt={`${movie.Title} poster`} />
-      <h3>{movie.Title}</h3>
+      <img src={movie?.Poster || ""} alt={`${movie?.Title || "Unknown"} poster`} />
+      <h3>{movie?.Title || "Unknown"}</h3>
       <div>
         <p>
           <span>🗓</span>
-          <span>{movie.Year}</span>
+          <span>{movie?.Year || "N/A"}</span>
         </p>
       </div>
     </li>
@@ -119,20 +119,20 @@ export function MoviesList({ movies }) {
 export function WatchedMovie({ movie }) {
   return (
     <li>
-      <img src={movie.Poster} alt={`${movie.Title} poster`} />
-      <h3>{movie.Title}</h3>
+      <img src={movie?.Poster || ""} alt={`${movie?.Title || "Unknown"} poster`} />
+      <h3>{movie?.Title || "Unknown"}</h3>
       <div>
         <p>
           <span>⭐️</span>
-          <span>{movie.imdbRating}</span>
+          <span>{movie?.imdbRating || "N/A"}</span>
         </p>
         <p>
           <span>🌟</span>
-          <span>{movie.userRating}</span>
+          <span>{movie?.userRating || "N/A"}</span>
         </p>
         <p>
           <span>⏳</span>
-          <span>{movie.runtime} min</span>
+          <span>{movie?.runtime || "N/A"} min</span>
         </p>
       </div>
     </li>
@@ -189,6 +189,15 @@ export function Box({ el }) {
 export function Main({ children }) {
   return <main className="main">{children}</main>;
 }
+export function WatchedSection({ watched }) {
+  return (
+    <>
+      {" "}
+      <WatchedSummary watched={watched} />
+      <WatchList watched={watched} />
+    </>
+  );
+}
 export default function App() {
   const [movies, setMovies] = useState(tempMovieData);
   const [watched, setWatched] = useState(tempWatchedData);
@@ -202,11 +211,7 @@ export default function App() {
         <Box el={<MoviesList movies={movies} />} />
         <Box
           el={
-            <>
-              {" "}
-              <WatchedSummary watched={watched} />
-              <WatchList watched={watched} />
-            </>
+            <WatchedSection watched={watched} />
           }
         />
       </Main>

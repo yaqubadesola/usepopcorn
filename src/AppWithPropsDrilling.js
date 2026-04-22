@@ -96,12 +96,12 @@ export function Button({ isOpen, setIsOpen }) {
 export function Movie({ movie }) {
   return (
     <li>
-      <img src={movie.Poster} alt={`${movie.Title} poster`} />
-      <h3>{movie.Title}</h3>
+      <img src={movie?.Poster || ""} alt={`${movie?.Title || "Unknown"} poster`} />
+      <h3>{movie?.Title || "Unknown"}</h3>
       <div>
         <p>
           <span>🗓</span>
-          <span>{movie.Year}</span>
+          <span>{movie?.Year || "N/A"}</span>
         </p>
       </div>
     </li>
@@ -133,20 +133,20 @@ export function MoviesBox({ movies }) {
 export function WatchedMovie({ movie }) {
   return (
     <li>
-      <img src={movie.Poster} alt={`${movie.Title} poster`} />
-      <h3>{movie.Title}</h3>
+      <img src={movie?.Poster || ""} alt={`${movie?.Title || "Unknown"} poster`} />
+      <h3>{movie?.Title || "Unknown"}</h3>
       <div>
         <p>
           <span>⭐️</span>
-          <span>{movie.imdbRating}</span>
+          <span>{movie?.imdbRating || "N/A"}</span>
         </p>
         <p>
           <span>🌟</span>
-          <span>{movie.userRating}</span>
+          <span>{movie?.userRating || "N/A"}</span>
         </p>
         <p>
           <span>⏳</span>
-          <span>{movie.runtime} min</span>
+          <span>{movie?.runtime || "N/A"} min</span>
         </p>
       </div>
     </li>
