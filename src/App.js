@@ -1,3 +1,4 @@
+import { useState } from "react";
 
 const tempMovieData = [
   {
@@ -213,7 +214,7 @@ export default function App() {
       setMovies={setMovies}
       watched={watched}
       setWatched={setWatched}
-      /> */}
+      */ }
     </>
   );
 }
