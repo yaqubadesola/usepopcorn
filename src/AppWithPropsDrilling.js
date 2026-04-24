@@ -47,8 +47,10 @@ const tempWatchedData = [
   },
 ];
 
-const average = (arr) =>
-  arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
+const average = (arr) => {
+  if (!arr.length) return 0;
+  return arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
+};
 
 export function Logo() {
   return (
